@@ -1,0 +1,50 @@
+import java.util.*;
+class Solution {
+    ArrayList<Integer> findTwoElement(int arr[]) {
+        // code here
+        int n=arr.length;
+        int duplicates=-1;
+        ArrayList<Integer> finals=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]==arr[j]){
+                    duplicates=arr[i];
+                    break;
+                }
+            }
+        }
+        Arrays.sort(arr);
+        
+        int expected=1;
+        int missing=-1;
+        for(int i=0;i<n;i++){
+            if(arr[i]==expected){
+                expected++;
+            }else if(arr[i]>expected){
+                missing=expected;
+                break;
+            }
+        }
+        if(missing==-1){
+            missing=n;
+        }
+        finals.add(duplicates);
+        finals.add(missing);
+        return finals;
+        
+    }
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        Solution sol=new Solution();
+        ArrayList<Integer> output=sol.findTwoElement(arr);
+        for(int i=0;i<output.size();i++){
+         System.out.print(output);   
+        }
+    }    
+}
