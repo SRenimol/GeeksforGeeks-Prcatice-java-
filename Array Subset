@@ -1,0 +1,38 @@
+import java.util.*;
+class Solution {
+    public boolean isSubset(int a[], int b[]) {
+        // Your code here
+        boolean[] used=new boolean[a.length];
+        for(int i=0;i<b.length;i++){
+            boolean found=false;
+            for(int j=0;j<a.length;j++){
+                if(b[i]==a[j]&& !used[j]){
+                    used[j]=true;
+                    found=true;
+                    break;
+                }
+                
+            }
+            if(!found){
+                return false;
+            }
+        }
+        return true;
+            
+        
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n1=sc.nextInt();
+        int n2=sc.nextInt();
+        int a[]=new int[n1];
+        int b[]=new int[n2];
+        for(int i=0;i<n1;i++) a[i]=sc.nextInt();
+        
+        for(int j=0;j<n2;j++) b[j]=sc.nextInt();
+        
+        Solution sol=new Solution();
+        Boolean result=sol.isSubset(a,b);
+        System.out.println(result);
+    }
+}
