@@ -1,0 +1,31 @@
+import java.util.*;
+class Solution {
+    public ArrayList<Integer> findDuplicates(int[] arr) {
+        // code here
+        ArrayList<Integer> duplicates=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]==arr[j] && !duplicates.contains(arr[i])){
+                    duplicates.add(arr[i]);
+                }
+            }
+        }
+        return duplicates;
+    }
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        
+        Solution sol=new Solution();
+        ArrayList<Integer> output=sol. findDuplicates(arr);
+        
+        for(int i=0;i<output.size();i++){
+            System.out.print(output.get(i));
+            
+        }
+    }
+}
